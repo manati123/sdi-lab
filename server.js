@@ -53,7 +53,7 @@ app.post('/api/items', (req, res) => {
 });
 
 // READ
-app.get('/api/items', (req, res) => {
+app.get('/api/items', async (req, res) => {
 //   Item.find((err, items) => {
 //     if (err) {
 //       res.status(400).json(err);
@@ -64,6 +64,13 @@ app.get('/api/items', (req, res) => {
 //     console.log(session)
 // })
 console.log("BALLZ")
+try {
+    const foundItems = await Item.find();
+    console.log(foundItems)
+    res.status(400).json(foundItems)
+} catch(err) {
+    res.status(400).json(err)
+}
 // Item.find().then(function(req,res) {
 //     if (err) {
 //         res.status(400).json(err);
