@@ -41,15 +41,22 @@ const ItemSchema = new Schema({
 const Item = mongoose.model('Item', ItemSchema);
 
 // CREATE
-app.post('/api/items', (req, res) => {
-  const newItem = new Item(req.body);
-  newItem.save((err, item) => {
-    if (err) {
-      res.status(400).json(err);
-    } else {
-      res.status(200).json(item);
-    }
-  });
+app.post('/api/items', async (req, res) => {
+//   const newItem = new Item(req.body);
+//   newItem.save((err, item) => {
+//     if (err) {
+//       res.status(400).json(err);
+//     } else {
+//       res.status(200).json(item);
+//     }
+//   });
+try {
+    const newItem = new Item(req.body)
+    await newItem.save()
+    res.status(200).json(newItem)
+} catch (err) {
+    res.status(400).json(err)
+}
 });
 
 // READ
