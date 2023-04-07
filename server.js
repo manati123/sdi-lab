@@ -54,12 +54,22 @@ app.post('/api/items', (req, res) => {
 
 // READ
 app.get('/api/items', (req, res) => {
-  Item.find((err, items) => {
-    if (err) {
-      res.status(400).json(err);
-    } else {
-        res.status(200).json(items);
-}});
+//   Item.find((err, items) => {
+//     if (err) {
+//       res.status(400).json(err);
+//     } else {
+//         res.status(200).json(items);
+// }});
+Item.startSession().then(session => {
+    console.log(session)
+})
+// Item.find().then(function(req,res) {
+//     if (err) {
+//         res.status(400).json(err);
+//       } else {
+//           res.status(200).json(items);
+// });
+
 });
 
 // UPDATE
