@@ -77,7 +77,7 @@ app.put('/api/items/:id', async (req, res) => {
 const id = req.params.id;
 const updatedItem = req.body;
 try {
-const item = await Item.findByIdAndUpdate(id, updatedItem, {new: false})
+const item = await Item.findByIdAndUpdate(id, updatedItem, {new: true})
 res.status(200).json(updatedItem)
 } catch(err) {
     console.log(err)
