@@ -78,6 +78,7 @@ const id = req.params.id;
 const updatedItem = req.body;
 try {
 const item = await Item.findByIdAndUpdate(id, updatedItem, {new: true})
+console.log(updatedItem)
 res.status(200).json(updatedItem)
 } catch(err) {
     console.log(err)
