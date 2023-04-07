@@ -55,7 +55,7 @@ try {
     await newItem.save()
     res.status(200).json(newItem)
 } catch (err) {
-    print(err)
+    console.log(err)
     res.status(400).json(err)
 }
 });
@@ -77,7 +77,7 @@ try {
     console.log(foundItems)
     res.status(400).json(foundItems)
 } catch(err) {
-    print(err)
+    console.log(err)
     res.status(400).json(err)
 }
 // Item.find().then(function(req,res) {
