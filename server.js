@@ -21,7 +21,7 @@ app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
-mongoose.connect('mongodb://localhost/mydatabase', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://silviu:Silviu.00@cluster0.o3tdqlh.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
