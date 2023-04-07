@@ -62,58 +62,39 @@ try {
 
 // READ
 app.get('/api/items', async (req, res) => {
-//   Item.find((err, items) => {
-//     if (err) {
-//       res.status(400).json(err);
-//     } else {
-//         res.status(200).json(items);
-// }});
-// Item.startSession().then(session => {
-//     console.log(session)
-// })
-console.log("BALLZ")
 try {
     const foundItems = await Item.find();
     console.log(foundItems)
-    res.status(400).json(foundItems)
+    res.status(200).json(foundItems)
 } catch(err) {
     console.log(err)
     res.status(400).json(err)
 }
-// Item.find().then(function(req,res) {
-//     if (err) {
-//         res.status(400).json(err);
-//       } else {
-//           res.status(200).json(items);
-// });
-
 });
 
 // UPDATE
-app.put('/api/items/:id', (req, res) => {
+app.put('/api/items/:id', async (req, res) => {
 const id = req.params.id;
 const updatedItem = req.body;
-
-Item.findByIdAndUpdate(id, updatedItem, { new: true }, (err, item) => {
-if (err) {
-res.status(400).json(err);
-} else {
-res.status(200).json(item);
+try {
+const item = await Item.findByIdAndUpdate(id, updatedItem, {new: true})
+res.status(200).json(item)
+} catch(err) {
+    console.log(err)
+    res.status(400).json(err)
 }
-});
 });
 
 // DELETE
-app.delete('/api/items/:id', (req, res) => {
+app.delete('/api/items/:id', async (req, res) => {
 const id = req.params.id;
-
-Item.findByIdAndRemove(id, (err, item) => {
-if (err) {
-res.status(400).json(err);
-} else {
-res.status(200).json({ message: 'Item deleted successfully' });
+try {
+ await Item.findByIdAndRemove(id)
+ res.status(200).json({message: 'Item deleted sucessfully'})
+} catch(err) {
+    console.log(err)
+    res.status(400).json(err)
 }
-});
 });
 
 
