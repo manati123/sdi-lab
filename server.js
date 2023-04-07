@@ -1,3 +1,11 @@
+
+/**
+In this code, we define a Mongoose schema for our data model, which has three fields: name, description, and price. We create a new Mongoose model called Item from the schema.
+For each endpoint, we define an HTTP method and a URL path. For the create endpoint, we create a new instance of Item from the request body, save it to the database, and return the new item with a status code of 200 if successful or a status code of 400 if there was an error.
+For the read endpoint, we find all items in the database and return them with a status code of 200 if successful or a status code of 400 if there was an error.
+For the update endpoint, we use the item ID from the URL path to find the item in the database and update it with the request body. We return the updated item with a status code of 200 if successful or a status code of 400 if there was an error.
+For the delete endpoint, we use the item ID from the URL path to find the item in the database and remove it. We return a message with a status code of 200 if successful or a status code of 400 if there was an error.
+ */
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
