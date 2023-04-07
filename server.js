@@ -60,9 +60,10 @@ app.get('/api/items', (req, res) => {
 //     } else {
 //         res.status(200).json(items);
 // }});
-Item.startSession().then(session => {
-    console.log(session)
-})
+// Item.startSession().then(session => {
+//     console.log(session)
+// })
+console.log("BALLZ")
 // Item.find().then(function(req,res) {
 //     if (err) {
 //         res.status(400).json(err);
