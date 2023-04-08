@@ -37,7 +37,7 @@ class API {
         }
     }
     
-    func addItem(_ item: Item) {
+    func addItem(_ item: Item, _ callback:@escaping ()->Void) {
         let parameters: [String: Any] = [
             "name": item.name,
             "description": item.description,
@@ -47,13 +47,8 @@ class API {
             switch response.result {
             case .failure(let error):
                 print(error)
-            case .success(let item):
-                do {
-                    let decodedItem = try JSONDecoder().decode(Item.self, from: item)
-                    print(decodedItem)
-                } catch {
-                    print(error)
-                }
+            case .success:
+                callback()
             }
             
         }

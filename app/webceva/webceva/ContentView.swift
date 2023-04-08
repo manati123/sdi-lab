@@ -28,7 +28,11 @@ struct ContentView: View {
                 Text("Get Items From API")
             }
             ForEach(viewModel.items, id:\.self) { item in
-                Text(item.name)
+                HStack {
+                    Text(item.name)
+                    Text(item.description)
+                    Text("\(item.price)")
+                }
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.green)
