@@ -83,9 +83,11 @@ class API {
     
     func updateItem(with id: String, _ item: Item, _ callback:@escaping (Item)->Void) {
         let parameters: [String: Any] = [
+            "_id": item._id,
             "name": item.name,
             "description": item.description,
-            "price": item.price
+            "price": item.price,
+            "__v": item.__v
         ]
         AF.request("\(url)\(id)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
             switch response.result {
