@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A1EACDC812E8842D6514121 /* Pods_webceva.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CED3963ADE314C42E12A6 /* Pods_webceva.framework */; };
+		F962639429E19E2200EB565C /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F962639329E19E2200EB565C /* UpdateView.swift */; };
+		F962639729E1A34700EB565C /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = F962639629E1A34700EB565C /* SwiftMessages */; };
+		F962639929E1A62300EB565C /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F962639829E1A62300EB565C /* AddView.swift */; };
 		F9C9D97D29E0AE09004C86B2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C9D97C29E0AE09004C86B2 /* API.swift */; };
 		F9E701A429E0AD3B002463CE /* webcevaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E701A329E0AD3B002463CE /* webcevaApp.swift */; };
 		F9E701A629E0AD3B002463CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E701A529E0AD3B002463CE /* ContentView.swift */; };
@@ -19,6 +22,8 @@
 		30A5D1B84074D6FCBE8A6A9A /* Pods-webceva.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webceva.debug.xcconfig"; path = "Target Support Files/Pods-webceva/Pods-webceva.debug.xcconfig"; sourceTree = "<group>"; };
 		8D619BE5A3561E47C4D34936 /* Pods-webceva.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webceva.release.xcconfig"; path = "Target Support Files/Pods-webceva/Pods-webceva.release.xcconfig"; sourceTree = "<group>"; };
 		C17CED3963ADE314C42E12A6 /* Pods_webceva.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webceva.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F962639329E19E2200EB565C /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
+		F962639829E1A62300EB565C /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		F9C9D97C29E0AE09004C86B2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F9E701A029E0AD3B002463CE /* webceva.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webceva.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E701A329E0AD3B002463CE /* webcevaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webcevaApp.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F962639729E1A34700EB565C /* SwiftMessages in Frameworks */,
 				1A1EACDC812E8842D6514121 /* Pods_webceva.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +88,8 @@
 				F9E701A529E0AD3B002463CE /* ContentView.swift */,
 				F9E701A729E0AD3E002463CE /* Assets.xcassets */,
 				F9E701A929E0AD3E002463CE /* Preview Content */,
+				F962639329E19E2200EB565C /* UpdateView.swift */,
+				F962639829E1A62300EB565C /* AddView.swift */,
 			);
 			path = webceva;
 			sourceTree = "<group>";
@@ -112,6 +120,9 @@
 			dependencies = (
 			);
 			name = webceva;
+			packageProductDependencies = (
+				F962639629E1A34700EB565C /* SwiftMessages */,
+			);
 			productName = webceva;
 			productReference = F9E701A029E0AD3B002463CE /* webceva.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +151,9 @@
 				Base,
 			);
 			mainGroup = F9E7019729E0AD3B002463CE;
+			packageReferences = (
+				F962639529E1A34700EB565C /* XCRemoteSwiftPackageReference "SwiftMessages" */,
+			);
 			productRefGroup = F9E701A129E0AD3B002463CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -210,6 +224,8 @@
 			files = (
 				F9E701A629E0AD3B002463CE /* ContentView.swift in Sources */,
 				F9C9D97D29E0AE09004C86B2 /* API.swift in Sources */,
+				F962639929E1A62300EB565C /* AddView.swift in Sources */,
+				F962639429E19E2200EB565C /* UpdateView.swift in Sources */,
 				F9E701A429E0AD3B002463CE /* webcevaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +429,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F962639529E1A34700EB565C /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F962639629E1A34700EB565C /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F962639529E1A34700EB565C /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F9E7019829E0AD3B002463CE /* Project object */;
 }

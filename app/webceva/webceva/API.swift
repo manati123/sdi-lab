@@ -11,10 +11,14 @@ import Alamofire
 class API {
     struct Item: Codable, Hashable {
         let _id: String
-        let name: String
-        let description: String
-        let price: Int
+        var name: String
+        var description: String
+        var price: Int
         let __v: Int
+    }
+    
+    struct Message: Codable {
+        let message: String
     }
     
     static var instance = API()
@@ -24,20 +28,20 @@ class API {
         AF.request(url, method: .get, encoding: JSONEncoding.default).responseData { response in
             switch response.result {
             case .failure(let error):
-                print(error)
+                ViewModel.showMessage(message: error.localizedDescription)
             case .success(let items):
                 do {
                     let decodedItems = try JSONDecoder().decode([Item].self, from: items)
                     print(decodedItems)
                     callback(decodedItems)
                 } catch {
-                    print(error)
+                    ViewModel.showMessage(message: error.localizedDescription)
                 }
             }
         }
     }
     
-    func addItem(_ item: Item, _ callback:@escaping ()->Void) {
+    func addItem(_ item: Item, _ callback:@escaping (Item)->Void) {
         let parameters: [String: Any] = [
             "name": item.name,
             "description": item.description,
@@ -46,41 +50,53 @@ class API {
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
             switch response.result {
             case .failure(let error):
-                print(error)
-            case .success:
-                callback()
+                ViewModel.showMessage(message: error.localizedDescription)
+            case .success(let item):
+                do {
+                    let decodedItem = try JSONDecoder().decode(Item.self, from: item)
+                    print(decodedItem)
+                    callback(decodedItem)
+                } catch {
+                    ViewModel.showMessage(message: error.localizedDescription)
+                }
             }
             
         }
     }
     
-    func deleteItem(by id: String) {
-        AF.request("\(url)/\(id)", method: .delete).responseData { response in
+    func deleteItem(by id: String, _ callback:@escaping ()->Void) {
+        AF.request("\(url)\(id)", method: .delete).responseData { response in
             switch response.result {
             case .failure:
-                print("No item with such id")
+                ViewModel.showMessage(message: "No item with such id")
             case .success(let message):
-                print(message)
+                do {
+                    let decodedMessage = try JSONDecoder().decode(Message.self, from: message)
+                    ViewModel.showMessage(message: decodedMessage.message)
+                    callback()
+                } catch {
+                    ViewModel.showMessage(message: error.localizedDescription)
+                }
             }
         }
     }
     
-    func updateItem(with id: String, _ item: Item) {
+    func updateItem(with id: String, _ item: Item, _ callback:@escaping (Item)->Void) {
         let parameters: [String: Any] = [
             "name": item.name,
             "description": item.description,
             "price": item.price
         ]
-        AF.request("\(url)/\(id)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
+        AF.request("\(url)\(id)", method: .put, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
             switch response.result {
             case .failure(let error):
-                print(error)
+                ViewModel.showMessage(message: error.localizedDescription)
             case .success(let item):
                 do {
                     let decodedItem = try JSONDecoder().decode(Item.self, from: item)
-                    print(decodedItem)
+                    callback(decodedItem)
                 } catch {
-                    print(error)
+                    ViewModel.showMessage(message: error.localizedDescription)
                 }
             }
             
